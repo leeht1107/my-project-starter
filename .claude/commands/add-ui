@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# shadcn/ui 컴포넌트 추가 커맨드
+# 사용법: /add-ui <component-name> [<component-name> ...]
+# 예시: /add-ui dialog
+#      /add-ui dropdown-menu select toast
+
+if [ $# -eq 0 ]; then
+    echo "❌ 추가할 컴포넌트 이름을 지정해주세요."
+    echo ""
+    echo "사용법: /add-ui <component-name> [<component-name> ...]"
+    echo ""
+    echo "예시:"
+    echo "  /add-ui dialog"
+    echo "  /add-ui dropdown-menu select toast"
+    echo ""
+    echo "사용 가능한 컴포넌트 목록: https://ui.shadcn.com/docs/components"
+    exit 1
+fi
+
+echo "🎨 shadcn/ui 컴포넌트 추가 중..."
+echo ""
+
+for component in "$@"; do
+    echo "📦 Adding: $component"
+    npx shadcn@latest add "$component"
+    echo ""
+done
+
+echo "✅ 완료!"
